@@ -28,6 +28,7 @@ exports.createNewUser = async (req, res) => {
   }
 };
 
+// Login Controller
 exports.loginUser = async (req, res) => {
   let { email, password } = req.body;
 
