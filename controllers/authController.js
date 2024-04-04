@@ -1,7 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const JWT_SECRET = "very_secret_jwt_token_ha_ha";
 
 // Create New User
 exports.createNewUser = async (req, res) => {
@@ -41,7 +40,15 @@ exports.loginUser = async (req, res) => {
     if (!passwordMatch) {
       return res.status(200).json({ message: "Invalid password" });
     }
-    const token = jwt.sign({ name: user.name, email: user.email, isAdmin: user.isAdmin }, JWT_SECRET);
+    const token = jwt.sign(
+      {
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        userId: user._id,
+      },
+      process.env.JWT_SECRET
+    );
     res.json({ token });
   } catch (error) {
     console.log(error);

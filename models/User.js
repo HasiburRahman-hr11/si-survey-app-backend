@@ -18,6 +18,13 @@ const userSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    // Array to store mission ids the user has participated in
+    participatedMissions: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Mission",
+      },
+    ],
   },
   { timestamps: true }
 );

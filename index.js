@@ -5,6 +5,7 @@ const fileUpload = require('express-fileupload');
 require('dotenv').config();
 
 const userRoutes = require('./routes/userRoutes');
+const missionRoutes = require('./routes/missionRoutes');
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(fileUpload());
 
 // Routes
 app.use(userRoutes);
+app.use(missionRoutes);
 
 
 // mongodb+srv://hrhasib:<password>@si-survey-cluster.9qrszl4.mongodb.net/?retryWrites=true&w=majority&appName=si-survey-cluster
